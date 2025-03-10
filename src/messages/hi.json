@@ -1,0 +1,70 @@
+{
+  "navigation": {
+    "home": "मुख्य पृष्ठ",
+    "about": "हमारे बारे में",
+    "judges": "न्यायाधीश"
+  },
+  "home": {
+    "livestream": "लाइव स्ट्रीमिंग",
+    "liveSession": "लाइव सत्र देखें",
+    "previousSessions": "पिछले सत्र देखें",
+    "latestUpdates": "नवीनतम अपडेट",
+    "viewAll": "सभी को देखें",
+    "exploreConnect": "एक्सप्लोर और कनेक्ट",
+    "courtCalendar": "कोर्ट कैलेंडर",
+    "chiefJustices": "मुख्य न्यायाधीश एवं न्यायाधीश",
+    "viewAllJudges": "सभी देखें",
+    "serviceIcons": {
+      "causelist": {
+        "title": "कॉज लिस्ट",
+        "subtitle": "दैनिक कोर्ट सूची"
+      },
+      "case-status": {
+        "title": "केस स्टेटस",
+        "subtitle": "अपना केस ट्रैक करें"
+      },
+      "daily-orders": {
+        "title": "दैनिक आदेश",
+        "subtitle": "कोर्ट के आदेश देखें"
+      },
+      "judgments": {
+        "title": "निर्णय",
+        "subtitle": "हाल के निर्णय"
+      },
+      "office-report": {
+        "title": "कार्यालय रिपोर्ट",
+        "subtitle": "कोर्ट रिपोर्ट्स"
+      },
+      "kvaa": {
+        "title": "केवीएए",
+        "subtitle": "वर्चुअल एक्सेस"
+      },
+      "e-filing": {
+        "title": "ई-फाइलिंग",
+        "subtitle": "ऑनलाइन केस फाइल करें"
+      },
+      "display": {
+        "title": "डिस्प्ले बोर्ड",
+        "subtitle": "केस स्थिति"
+      },
+      "helpline": {
+        "title": "हेल्पलाइन",
+        "subtitle": "सहायता प्राप्त करें"
+      }
+    },
+    "exploreCards": {
+      "important_judgments": "महत्वपूर्ण निर्णय",
+      "rti": "सूचना का अधिकार",
+      "escr": "ई-एससीआर",
+      "digital_scr": "डिजिटल एससीआर",
+      "njdg": "एनजेडीजी",
+      "welcome": "स्वागत है",
+      "judges_library": "न्यायाधीश पुस्तकालय",
+      "research_center": "अनुसंधान केंद्र",
+      "lisaashis": "लिसाशिस",
+      "legal_aid": "विधिक सहायता",
+      "snyavises": "स्न्यावीसेस",
+      "e_committee": "ई-समिति"
+    }
+  }
+}

@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { ServiceIcon } from "@/components/ui/service-icon"
@@ -11,14 +12,49 @@ import { AnimatedSection } from '@/components/ui/animated-section'
 import { JudgeCard } from '@/components/ui/judge-card'
 import Link from 'next/link'
 import { ContactSection } from '@/components/ui/contact-section'
+import { Navigation } from '@/components/ui/navigation'
+import { useLanguage } from '@/lib/contexts/language-context'
+import { PAGE_TRANSLATIONS } from '@/lib/translations/page-translations'
+import { useTranslations } from 'next-intl';
+
+const SERVICE_ICONS = {
+  'causelist': FileText,
+  'case-status': Search,
+  'daily-orders': FileText,
+  'judgments': Check,
+  'office-report': Files,
+  'kvaa': ScaleIcon,
+  'e-filing': Upload,
+  'display': LayoutDashboard,
+  'helpline': HelpCircle,
+} as const
+
+const EXPLORE_ICONS = {
+  important_judgments: FileSearch,  // Updated keys to match translations
+  rti: Globe,
+  escr: Database,
+  digital_scr: ScaleIcon,
+  njdg: Gavel,
+  welcome: Users,
+  judges_library: Library,
+  research_center: School,
+  lisaashis: Book,
+  legal_aid: HandHelping,
+  snyavises: Building2,
+  e_committee: FileSpreadsheet,
+} as const
+
+type ServiceIconKey = keyof typeof PAGE_TRANSLATIONS['service_icons']
 
 export default function Home() {
+  const { language } = useLanguage()
+  const t = useTranslations('home');
+  
   const videoId = "QjWiryRN1TE";
   
   return (
     <main className="relative">
-      {/* Hero Section */}
-      <section className="relative h-[50vh] sm:h-[60vh] lg:h-[80vh] w-full">
+      <section className="relative h-[80vh] w-full">
         <Image
           src="/supreme-court-building.jpg"
           alt="Supreme Court Building"
@@ -29,89 +65,67 @@ export default function Home() {
           className="object-cover object-[center_35%]"
         />
         <div className="absolute inset-x-0 top-0 z-20">
-          <div className="container mx-auto flex items-start gap-4 sm:gap-8 px-4 py-4 sm:py-6">
+          <div className="container mx-auto flex items-start gap-8 px-4 py-6">
             <Image 
               src="/supreme-court-logo.svg" 
               alt="Supreme Court Logo" 
-              width={60}
-              height={60}
-              className="sm:w-[80px] sm:h-[80px] lg:w-[100px] lg:h-[100px] p-2"
+              width={100} 
+              height={100}
+              className="p-2"
             />
             <div className="text-black pt-1">
-              <h1 className="text-hindi text-base sm:text-lg lg:text-xl font-medium tracking-wide mb-1">
-                भारत का सर्वोच्च न्यायालय
+              <h1 className="text-hindi text-xl font-medium tracking-wide mb-1">
+                {language === 'hi' ? 'भारत का सर्वोच्च न्यायालय' : 'Supreme Court of India'}
               </h1>
-              <h2 className="text-english-serif text-xl sm:text-2xl lg:text-3xl font-bold mb-1 tracking-wider">
+              <h2 className="text-english-serif text-3xl font-bold mb-1 tracking-wider">
                 Supreme Court of India
               </h2>
-              <p className="text-hindi text-sm sm:text-base lg:text-lg font-medium tracking-widest">
+              <p className="text-hindi text-lg font-medium tracking-widest mb-4">
                 ॥ यतो धर्मस्ततो जय: ॥
               </p>
+              
+              {/* Add Navigation here */}
+              <div className="-mx-4">
+                <Navigation />
+              </div>
             </div>
           </div>
         </div>
         
-        {/* Service cards */}
-        <div className="absolute -bottom-32 sm:-bottom-24 lg:-bottom-20 left-0 right-0 z-30">
+        {/* Service cards positioned at bottom of hero */}
+        <div className="absolute -bottom-20 left-0 right-0 z-30">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 gap-2 sm:gap-3">
-              <ServiceIcon 
-                icon={<FileText className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="वाद"
-                subtitleHindi="सूची"
-              />
-              <ServiceIcon 
-                icon={<Search className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="वाद"
-                subtitleHindi="प्रस्थिति"
-              />
-              <ServiceIcon 
-                icon={<FileText className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="दैनिक"
-                subtitleHindi="आदेश"
-              />
-              <ServiceIcon 
-                icon={<Check className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="निर्णय"
-                subtitleHindi="पत्र"
-              />
-              <ServiceIcon 
-                icon={<Files className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="कार्यालय"
-                subtitleHindi="रिपोर्ट"
-              />
-              <ServiceIcon 
-                icon={<ScaleIcon className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="के"
-                subtitleHindi="विएए"
-              />
-              <ServiceIcon 
-                icon={<Upload className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="ई"
-                subtitleHindi="फाइलिंग"
-              />
-              <ServiceIcon 
-                icon={<LayoutDashboard className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="प्रदर्शन"
-                subtitleHindi="बोर्ड"
-              />
-              <ServiceIcon 
-                icon={<HelpCircle className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
-                titleHindi="हेल्पलाइन"
-                subtitleHindi="2024"
-              />
+            <div className="grid grid-cols-9 gap-3">
+              {PAGE_TRANSLATIONS.service_icons && Object.keys(PAGE_TRANSLATIONS.service_icons).map((key) => {
+                const iconKey = key as keyof typeof SERVICE_ICONS
+                const IconComponent = SERVICE_ICONS[iconKey]
+                const translations = PAGE_TRANSLATIONS.service_icons[key as ServiceIconKey]
+
+                if (!IconComponent || !translations) return null
+
+                return (
+                  <ServiceIcon 
+                    key={key}
+                    icon={<IconComponent className="w-8 h-8 stroke-[#993333] stroke-[1.5]" />}
+                    titleHindi={translations.title[language]}
+                    subtitleHindi={translations.subtitle[language]}
+                  />
+                )
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Content section */}
-      <section className="pt-40 sm:pt-36 lg:pt-32 bg-white">
+      {/* Content section pushed down to accommodate service cards */}
+      <section className="pt-32 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-8">
             {/* Left Column - Live Streaming */}
             <div>
-              <h2 className="text-[#993333] text-lg sm:text-xl font-medium mb-4">लाइव स्ट्रीमिंग</h2>
+              <h2 className="text-[#993333] text-xl font-medium mb-4">
+                {t('livestream')}
+              </h2>
               <div className="relative aspect-video bg-black mb-4">
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}`}
@@ -121,24 +135,24 @@ export default function Home() {
                   allowFullScreen
                 />
               </div>
-              <div className="flex justify-between text-xs sm:text-sm">
+              <div className="flex justify-between text-sm">
                 <a href={`https://youtu.be/${videoId}`} target="_blank" rel="noopener noreferrer" className="text-[#993333]/70 hover:text-[#993333]">
-                  लाइव सत्र
+                  {t('live-session')}
                 </a>
                 <a href="https://www.youtube.com/@supremecourtofindia" target="_blank" rel="noopener noreferrer" className="text-[#993333]/70 hover:text-[#993333]">
-                  पूर्व सत्र
+                  {t('previous-sessions')}
                 </a>
               </div>
             </div>
 
             {/* Right Column - Latest Updates */}
             <div>
-              <h2 className="text-[#993333] text-lg sm:text-xl lg:text-2xl font-semibold mb-4 sm:mb-6">
-                नवीनतम जानकारी
+              <h2 className="text-[#993333] text-2xl font-semibold mb-6">
+                {t('latest-updates')}
               </h2>
               <UpdatesTabs />
-              <div className="text-center mt-6 sm:mt-8">
-                <button className="w-full sm:w-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 border border-gray-300 text-[#993333] rounded-full hover:bg-gray-50 transition-colors font-medium text-sm sm:text-base">
+              <div className="text-center mt-8">
+                <button className="px-8 py-2.5 border border-gray-300 text-[#993333] rounded-full hover:bg-gray-50 transition-colors font-medium">
                   सभी को देखें ›
                 </button>
               </div>
@@ -148,82 +162,30 @@ export default function Home() {
       </section>
 
       {/* Explore Section */}
-      <section className="bg-[#f5f2eb] py-8 sm:py-12 lg:py-16">
+      <section className="bg-[#f5f2eb] py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-xl sm:text-2xl font-semibold text-[#9b8154] text-center mb-8 sm:mb-12">
-            अन्वेषण करें और कनेक्ट संयोजित करें
+          <h2 className="text-2xl font-semibold text-[#9b8154] text-center mb-12">
+            {t('explore-connect')}
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            <ExploreCard 
-              icon={<FileSearch />}
-              title="महत्वपूर्ण निर्णय सारांश"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<Globe />}
-              title="आरटीआई"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<Database />}
-              title="ई-एससीआर"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<ScaleIcon />}
-              title="डिजिटल एससीआर"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<Gavel />}
-              title="एनजेडीजी"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<Users />}
-              title="सुस्वागतम्"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<Library />}
-              title="न्यायाधीश पुस्तकालय"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<School />}
-              title="अनुसंधान एवं योजना केंद्र"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<Book />}
-              title="लि.सं.आं.शि.स"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<HandHelping />}
-              title="विधिक सहायता"
-              href="#"
-            />
-            <ExploreCard 
-              icon={<Building2 />}
-              title="स.न्या.वि.से.स."
-              href="#"
-            />
-            <ExploreCard 
-              icon={<FileSpreadsheet />}
-              title="ई-समिति"
-              href="#"
-            />
+          <div className="grid grid-cols-4 gap-6">
+            {Object.entries(EXPLORE_ICONS).map(([key, Icon]) => (
+              <ExploreCard 
+                key={key}
+                icon={<Icon />}
+                title={t(`exploreCards.${key}`)}
+                href="#"
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* Calendar and Press Release Section */}
-      <section className="bg-white py-8 sm:py-12 lg:py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Press Releases */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-100 order-2 lg:order-1">
+          <div className="grid grid-cols-2 gap-12">
+            {/* Left Column - Press Releases with Tabs */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100">
               <div className="flex border-b">
                 {[
                   { id: 'press', label: 'प्रेस विज्ञप्ति', icon: <Newspaper className="w-4 h-4" /> },
@@ -271,8 +233,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Calendar */}
-            <div className="flex flex-col items-center order-1 lg:order-2">
+            {/* Right Column - Calendar */}
+            <div className="flex flex-col items-center"> {/* Changed to flex container with center alignment */}
               <h2 className="text-2xl font-semibold text-[#993333] mb-8 flex items-center gap-2">
                 <CalendarIcon className="w-6 h-6" />
                 कोर्ट कैलेंडर
@@ -287,21 +249,21 @@ export default function Home() {
       <AnimatedSection />
 
       {/* Judges Section */}
-      <section className="bg-white py-8 sm:py-12 lg:py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8 sm:mb-12">
-            <h2 className="text-xl sm:text-2xl font-semibold text-[#993333]">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-2xl font-semibold text-[#993333]">
               मुख्य न्यायाधीश एवं न्यायाधीश
             </h2>
             <Link
               href="/justices"
-              className="w-full sm:w-auto px-4 sm:px-6 py-2 border border-[#993333] text-center text-[#993333] rounded-lg hover:bg-[#993333] hover:text-white transition-colors"
+              className="px-6 py-2 border border-[#993333] text-[#993333] rounded-lg hover:bg-[#993333] hover:text-white transition-colors"
             >
               सभी देखें
             </Link>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-5 gap-6">
             <JudgeCard 
               name="Sanjiv Khanna"
               nameHindi="न्यायमूर्ति संजीव खन्ना"
@@ -423,7 +385,7 @@ export default function Home() {
 
 24 सितंबर 2004 को उन्हें इलाहाबाद उच्च न्यायालय के अपर न्यायाधीश के रूप में पदोन्नत किया गया। उन्होंने 27 फ़रवरी 2006 को इलाहाबाद उच्च न्यायालय के न्यायाधीश के रूप में शपथ ली।
 
-उन्हें 10 सितंबर 2019 को गुजरात उच्च न्यायालय के मुख्य न्यायमूर्ति के रूप में पदोन्नत किया गया। उन्हें 31 अगस्त 2021 को भारत के सर्वोच्च न्यायालय के न्यायाधीश के रूप में पदोन्नत किया गया था।`}
+उन्हें 10 सितंबर 2019 को गुजरात उच्च न्यायालय के मुख्य न्यायाधीश के रूप में पदोन्नत किया गया। उन्हें 31 अगस्त 2021 को भारत के सर्वोच्च न्यायालय के न्यायाधीश के रूप में पदोन्नत किया गया था।`}
             />
           </div>
         </div>

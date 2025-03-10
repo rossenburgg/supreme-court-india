@@ -1,0 +1,98 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "judges": "Judges"
+  },
+  "home": {
+    "livestream": "Live Streaming",
+    "liveSession": "Watch Live Session",
+    "previousSessions": "View Previous Sessions",
+    "latestUpdates": "Latest Updates",
+    "viewAll": "View All",
+    "exploreConnect": "Explore and Connect",
+    "courtCalendar": "Court Calendar",
+    "chiefJustices": "Chief Justice & Judges",
+    "viewAllJudges": "View All",
+    "serviceIcons": {
+      "causelist": {
+        "title": "Cause List",
+        "subtitle": "Daily Court List"
+      },
+      "case-status": {
+        "title": "Case Status",
+        "subtitle": "Track Your Case"
+      },
+      "daily-orders": {
+        "title": "Daily Orders",
+        "subtitle": "View Court Orders"
+      },
+      "judgments": {
+        "title": "Judgments",
+        "subtitle": "Recent Judgments"
+      },
+      "office-report": {
+        "title": "Office Report",
+        "subtitle": "Court Reports"
+      },
+      "kvaa": {
+        "title": "KVAA",
+        "subtitle": "Virtual Access"
+      },
+      "e-filing": {
+        "title": "E-Filing",
+        "subtitle": "File Cases Online"
+      },
+      "display": {
+        "title": "Display Boards",
+        "subtitle": "Case Status"
+      },
+      "helpline": {
+        "title": "Helpline",
+        "subtitle": "Get Support"
+      }
+    },
+    "exploreCards": {
+      "important_judgments": "Important Judgments",
+      "rti": "Right to Information",
+      "escr": "E-SCR",
+      "digital_scr": "Digital SCR",
+      "njdg": "NJDG",
+      "welcome": "Welcome",
+      "judges_library": "Judges Library",
+      "research_center": "Research Center",
+      "lisaashis": "LISAASHIS",
+      "legal_aid": "Legal Aid",
+      "snyavises": "SNYAVISES",
+      "e_committee": "E-Committee",
+      "importantJudgments": "Important Judgments",
+      "digitalScr": "Digital SCR",
+      "judgesLibrary": "Judges Library",
+      "researchCenter": "Research Center",
+      "legalAid": "Legal Aid",
+      "eCommittee": "E-Committee"
+    }
+  },
+  "history": {
+    "title": "History of the Supreme Court of India",
+    "introduction": "The Supreme Court of India is the apex judicial body under the Constitution of India. Article 124 of the Constitution states that \"There shall be a Supreme Court of India.\" The Supreme Court came into existence on 26 January 1950 with the coming into force of the Constitution.",
+    "inauguration": "On 28 January 1950, two days after India became a Sovereign Democratic Republic, the Supreme Court was inaugurated in the Chamber of Princes in the old Parliament building. The inaugural ceremony was attended by the first Chief Justice of India, Harilal J. Kania, and distinguished Judges of the Federal Court.",
+    "building": {
+      "title": "The Supreme Court Building",
+      "description": "After functioning from the old Parliament House, the Court moved to its present building on Tilak Marg in 1958. The building, inaugurated by Dr. Rajendra Prasad on 4 August 1958, is designed to symbolize the scales of justice with its 27.6 metre high dome and spacious colonnaded verandah.",
+      "statues": "The building features two significant statues: a life-size figure of Mahatma Gandhi and a 7-foot tall statue of Dr. B.R. Ambedkar, unveiled in 1996 and 2023 respectively."
+    },
+    "extensions": {
+      "title": "Building Extensions",
+      "1979": "Addition of East and West Wings with 19 courtrooms",
+      "1994": "Connection of East and West Wings",
+      "2015": "New Extension Block near Supreme Court Museum",
+      "2019": "Additional Building Complex with 1,80,700 sq. mts. area"
+    },
+    "judges": {
+      "title": "Growth in Number of Judges",
+      "description": "From an initial strength of 8 judges in 1950, the Supreme Court has grown to accommodate 34 judges as of 2019. Today, judges sit in various bench configurations to handle the increased workload efficiently."
+    },
+    "proceedings": "The proceedings of the Supreme Court are conducted in English, governed by the Supreme Court Rules, 2013 and related procedural guidelines."
+  }
+}
