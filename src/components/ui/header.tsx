@@ -1,7 +1,8 @@
 'use client'
 import { usePathname } from 'next/navigation'
-import { Search, Sun } from 'lucide-react'
-import { Navigation } from './navigation'  // Change to import Navigation instead of MainNavigation
+import { Sun } from 'lucide-react'
+import { Navigation } from './navigation'
+import { SearchDialog } from './search-dialog' // Import the SearchDialog component
 
 export function Header() {
   const pathname = usePathname()
@@ -19,7 +20,8 @@ export function Header() {
           </div>
           <div className="flex items-center gap-4 text-sm">
             <span>मुख्य विषयवस्तु पर जाएं</span>
-            <Search className="w-4 h-4" />
+            {/* Replace the static Search icon with the SearchDialog component */}
+            <SearchDialog />
             <button className="flex items-center gap-1">
               <Sun className="w-4 h-4" />
               <span>टेक्स्ट</span>

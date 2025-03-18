@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { Header } from '@/components/ui/header'
 import { Footer } from '@/components/ui/footer'
+import { QueryProvider } from '@/lib/providers/query-provider' // Import QueryProvider
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,11 +14,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        <QueryProvider> {/* Add QueryProvider here */}
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </QueryProvider>
       </body>
     </html>
   )
