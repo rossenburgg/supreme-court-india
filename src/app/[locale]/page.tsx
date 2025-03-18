@@ -63,29 +63,31 @@ export default function Home() {
 
         <div className="absolute inset-x-0 top-0 z-20">
           <div className="container mx-auto px-4 py-6">
-            <div className="flex items-start gap-8">
-              <Image 
-                src="/supreme-court-logo.svg" 
-                alt="Supreme Court Logo" 
-                width={100} 
-                height={100}
-                className="p-2"
-              />
-              <div className="text-black pt-1">
-                <h1 className="text-hindi text-xl font-medium tracking-wide mb-1">
-                  {locale === 'hi' ? 'भारत का सर्वोच्च न्यायालय' : 'Supreme Court of India'}
-                </h1>
-                <h2 className="text-english-serif text-3xl font-bold mb-1 tracking-wider">
-                  Supreme Court of India
-                </h2>
-                <p className="text-hindi text-lg font-medium tracking-widest mb-6">
-                  ॥ यतो धर्मस्ततो जय: ॥
-                </p>
-                
-                {/* Navigation with semi-transparent background */}
-                <div className="-mx-4 bg-white/90 backdrop-blur-sm rounded-md">
-                  <Navigation />
+            <div className="flex flex-col items-start">
+              <div className="flex items-start gap-8">
+                <Image 
+                  src="/supreme-court-logo.svg" 
+                  alt="Supreme Court Logo" 
+                  width={100} 
+                  height={100}
+                  className="p-2"
+                />
+                <div className="text-black pt-1">
+                  <h1 className="text-hindi text-xl font-medium tracking-wide mb-1">
+                    {locale === 'hi' ? 'भारत का सर्वोच्च न्यायालय' : 'Supreme Court of India'}
+                  </h1>
+                  <h2 className="text-english-serif text-3xl font-bold mb-1 tracking-wider">
+                    Supreme Court of India
+                  </h2>
+                  <p className="text-hindi text-lg font-medium tracking-widest mb-2">
+                    ॥ यतो धर्मस्ततो जय: ॥
+                  </p>
                 </div>
+              </div>
+              
+              {/* Navigation positioned below the header */}
+              <div className="w-full mt-4">
+                <Navigation />
               </div>
             </div>
           </div>
